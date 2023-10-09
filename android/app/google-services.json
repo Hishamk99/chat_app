@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "645430681630",
+    "project_id": "chatscolar-app",
+    "storage_bucket": "chatscolar-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645430681630:android:1dffde41f5bc23ec5dce0f",
+        "android_client_info": {
+          "package_name": "com.example.chat_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP3cmbsXYxfpwCviAkwylRi6bKhqPxOzg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
