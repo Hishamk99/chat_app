@@ -12,22 +12,30 @@ class RegisterPage extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: Column(
+        child: ListView(
           children: [
-            const Spacer(
-              flex: 2,
+            const SizedBox(
+              height: 75,
             ),
-            Image.asset('assets/images/scholar.png'),
-            const Text(
-              'Scolar Chat',
-              style: TextStyle(
-                fontFamily: 'Pacifico',
-                fontSize: 30,
-                color: Colors.white,
-              ),
+            Image.asset(
+              'assets/images/scholar.png',
+              height: 100,
             ),
-            const Spacer(
-              flex: 2,
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Scolar Chat',
+                  style: TextStyle(
+                    fontFamily: 'Pacifico',
+                    fontSize: 30,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 75,
             ),
             const Row(
               children: [
@@ -55,11 +63,13 @@ class RegisterPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const CustomButton(text: 'REGISTER',),
+            const CustomButton(
+              text: 'REGISTER',
+            ),
             const SizedBox(
               height: 10,
             ),
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
@@ -69,7 +79,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
                   },
                   child: const Text(
@@ -80,9 +90,6 @@ class RegisterPage extends StatelessWidget {
                   ),
                 )
               ],
-            ),
-            const Spacer(
-              flex: 3,
             ),
           ],
         ),
