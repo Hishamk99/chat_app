@@ -1,4 +1,5 @@
 import 'package:chat_app/constant.dart';
+import 'package:chat_app/helper/show_snack_bar.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,9 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   String? email;
-
   String? password;
 
   bool isLoading = false;
-
   GlobalKey<FormState> formKey = GlobalKey();
 
   @override
@@ -71,7 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                CustomTextField(
+                CustomFormTextField(
                   onChanged: (data) {
                     email = data;
                   },
@@ -80,7 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 10,
                 ),
-                CustomTextField(
+                CustomFormTextField(
                   onChanged: (data) {
                     password = data;
                   },
@@ -93,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   onTap: () async {
                     if (formKey.currentState!.validate()) {
                       isLoading = true;
-                      setState((){});
+                      setState(() {});
                       try {
                         await registerUser();
                         showSnackBar(context, 'Success');
@@ -108,7 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         showSnackBar(context, 'Error');
                       }
                       isLoading = false;
-                      setState((){});
+                      setState(() {});
                     } else {}
                   },
                   text: 'REGISTER',
@@ -146,16 +145,9 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(message),
-    ));
-  }
-
-  Future<UserCredential> registerUser() async {
+  Future<void> registerUser() async {
     var auth = FirebaseAuth.instance;
-    UserCredential userCredential = await registerUser();
-    return auth.createUserWithEmailAndPassword(
+    UserCredential userCredential = await auth.createUserWithEmailAndPassword(
         email: email!, password: password!);
   }
 }
