@@ -1,3 +1,4 @@
+import 'package:chat_app/constant.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
@@ -5,6 +6,19 @@ class ChatPage extends StatelessWidget {
   static String id = 'ChatPage';
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title:  Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(kLogo ,height: 50,),
+            Text('Chat'),
+          ],
+        ),
+        centerTitle: true,
+        backgroundColor: kPrimaryColor,
+        automaticallyImplyLeading: false,
+      ),
+    );
   }
 }
