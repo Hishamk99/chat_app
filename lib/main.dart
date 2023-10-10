@@ -1,3 +1,4 @@
+import 'package:chat_app/screens/chat_page.dart';
 import 'package:chat_app/screens/login_page.dart';
 import 'package:chat_app/screens/register_page.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,8 @@ class ChatApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         RegisterPage.id : (context) => RegisterPage(),
-        'LoginPage' : (context) => LoginPage()
+        ChatPage.id :(context)=> ChatPage(),
+        LoginPage.id : (context) => LoginPage()
       },
       initialRoute: 'LoginPage',
     );

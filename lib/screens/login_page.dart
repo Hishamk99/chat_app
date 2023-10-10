@@ -6,10 +6,11 @@ import 'package:chat_app/widgets/custom_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'chat_page.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
-
+  static String id = 'LoginPage';
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -20,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   GlobalKey<FormState> formKey = GlobalKey();
   String? email;
   String? password;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +90,8 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {});
                       try {
                         await loginUser();
-                        showSnackBar(context, 'Success');
+                        //showSnackBar(context, 'Success');
+                        Navigator.pushNamed(context, ChatPage.id);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'user-not-found') {
                           showSnackBar(context, 'No user found for that email.');
