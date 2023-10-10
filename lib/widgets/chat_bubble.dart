@@ -20,7 +20,7 @@ class ChatBubble extends StatelessWidget {
               topRight: Radius.circular(24),
               bottomRight: Radius.circular(24),
             )),
-        child: const Text('Hi i am a new use' , style: TextStyle(color: Colors.white),),
+        child: const Text('Hi i am a new user' , style: TextStyle(color: Colors.white),),
       ),
     );
   }
