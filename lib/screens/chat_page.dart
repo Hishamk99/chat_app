@@ -23,7 +23,11 @@ class ChatPage extends StatelessWidget {
         backgroundColor: kPrimaryColor,
         automaticallyImplyLeading: false,
       ),
-      body: ChatBubble(),
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context , index){
+        return  ChatBubble();
+      })
     );
   }
 }
