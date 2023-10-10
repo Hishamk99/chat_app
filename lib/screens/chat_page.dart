@@ -1,4 +1,5 @@
 import 'package:chat_app/constant.dart';
+import 'package:chat_app/widgets/chat_bubble.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
@@ -8,17 +9,23 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Row(
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(kLogo ,height: 50,),
-            Text('Chat'),
+            Image.asset(
+              kLogo,
+              height: 50,
+            ),
+            const Text('Chat'),
           ],
         ),
         centerTitle: true,
         backgroundColor: kPrimaryColor,
         automaticallyImplyLeading: false,
       ),
+      body: ChatBubble(),
     );
   }
 }
+
+
