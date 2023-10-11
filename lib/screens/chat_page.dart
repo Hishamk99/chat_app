@@ -14,12 +14,11 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: messages.snapshots(),
+        stream: messages.orderBy(kCreatedAt).snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<Message>messageList = [];
-            for(int i =0; i < snapshot.data!.docs.length; i++)
-            {
+            List<Message> messageList = [];
+            for (int i = 0; i < snapshot.data!.docs.length; i++) {
               messageList.add(Message.fromJson(snapshot.data!.docs[i]));
             }
             return Scaffold(
@@ -44,7 +43,9 @@ class ChatPage extends StatelessWidget {
                     child: ListView.builder(
                         itemCount: messageList.length,
                         itemBuilder: (context, index) {
-                          return ChatBubble(message: messageList[index],);
+                          return ChatBubble(
+                            message: messageList[index],
+                          );
                         }),
                   ),
                   Padding(
@@ -54,6 +55,7 @@ class ChatPage extends StatelessWidget {
                       onSubmitted: (data) {
                         messages.add({
                           'message': data,
+                          kCreatedAt : DateTime.now,
                         });
                         controller.clear();
                       },
