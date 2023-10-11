@@ -97,7 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       try {
                         await registerUser();
                         //showSnackBar(context, 'Success');
-                        Navigator.pushNamed(context, ChatPage.id);
+                        Navigator.pushNamed(context, ChatPage.id , arguments: email);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
                           showSnackBar(context, 'weak password');
