@@ -13,8 +13,8 @@ class ChatPage extends StatelessWidget {
   TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<QuerySnapshot>(
-        future: messages.get(),
+    return StreamBuilder<QuerySnapshot>(
+        stream: messages.snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<Message>messageList = [];
