@@ -1,4 +1,5 @@
 import 'package:chat_app/constant.dart';
+import 'package:chat_app/models/message.dart';
 import 'package:chat_app/widgets/chat_bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,7 +17,11 @@ class ChatPage extends StatelessWidget {
         future: messages.get(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            print(snapshot.data!.docs[0]['messages']);
+            List<Message>messageList = [];
+            for(int i =0; i < snapshot.data!.docs.length; i++)
+            {
+              messageList.add(Message.fromJson(snapshot.data!.docs[i]));
+            }
             return Scaffold(
               appBar: AppBar(
                 title: Row(
@@ -37,9 +42,9 @@ class ChatPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
-                        itemCount: 10,
+                        itemCount: messageList.length,
                         itemBuilder: (context, index) {
-                          return ChatBubble();
+                          return ChatBubble(message: messageList[index],);
                         }),
                   ),
                   Padding(
