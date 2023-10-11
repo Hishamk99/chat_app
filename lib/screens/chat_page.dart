@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:chat_app/constant.dart';
 import 'package:chat_app/models/message.dart';
 import 'package:chat_app/widgets/chat_bubble.dart';
@@ -46,9 +48,9 @@ class ChatPage extends StatelessWidget {
                         controller: _controler,
                         itemCount: messageList.length,
                         itemBuilder: (context, index) {
-                          return ChatBubble(
+                          return messageList[index].id == email ? ChatBubble(
                             message: messageList[index],
-                          );
+                          ) : ChatBubbleForFriend(message: messageList[index]);
                         }),
                   ),
                   Padding(
